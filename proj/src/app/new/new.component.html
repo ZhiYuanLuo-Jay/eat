@@ -1,0 +1,20 @@
+<div class="root">
+    <h4>Register a restaurant</h4>
+    <div *ngIf="err"><p style="color: red;">{{err}}</p></div>
+    <form (submit)="onSubmit()" style="border: 1px solid black; padding: 10px; width: 200px">
+          <!-- use the json pipe to see how newTask changes in real time -->
+          <!-- <p> {{ newRestaurant | json }} </p> -->
+          <div>
+              <p style="margin: 0px">Restaurant Name:</p>
+              <input name="newRestaurant.restaurant" type="text" [(ngModel)]="newRestaurant.restaurant" > 
+          </div>
+          <div>
+              <p style="margin: 0px" >Cuisine:</p>
+              <input name="newRestaurant.cuisine"  type="text" [(ngModel)]="newRestaurant.cuisine">
+          </div>
+          <br>
+          <button style="margin-left: 10px" [routerLink]="['']">Cancel</button> <input type="submit" value="Register" style="margin-left: 10px"> 
+      </form>
+  </div>
+  
+  

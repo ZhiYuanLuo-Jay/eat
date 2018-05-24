@@ -1,0 +1,31 @@
+<div class="root">
+    <h3>Write a review for {{restName}} </h3>
+    <div *ngIf="err"><p style="color: red;">{{err}}</p></div>
+    <form (submit)="onSubmit()" style="border: 1px solid black; padding: 10px; width: 350px">
+          <!-- use the json pipe to see how newTask changes in real time -->
+          <!-- <p> {{ newReview | json }} </p> -->
+          <div>
+              <p style="margin-right: 20px; display: inline-block;" >Your Name:</p>
+              <input style="display: inline-block;"  name="newReview.customer"  [(ngModel)]="newReview.customer" type="text">
+          </div>
+          <div>
+            <p style="margin-right: 50px; display: inline-block;" >Stars:</p>
+            <select style="display: inline-block; vertical-align: top; width: 100px; height: 30px;" name="newReview.stars" [(ngModel)]="newReview.stars" >
+              <option value="5" selected>5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="2">2 Stars</option>
+              <option value="1">1 Stars</option>
+            </select>
+          </div>
+          <div>
+            <p style="margin-bottom: 10px" >Your Review:</p>
+            <input name="newReview.content"  [(ngModel)]="newReview.content" type="text">
+          </div>
+  
+          <br>
+          <button type="button" class="btn btn-info" [routerLink]="['']">Cancel</button>  <input type="submit" class="btn btn-primary"  value="Submit" style="margin-left: 10px">
+      </form>
+  </div>
+  
+  

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login and Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
+</head>
+
+<body>
+   
+    <div class="wrapper">
+        <% JSON.stringify(messages) %>
+        <% if(messages.error) { %>
+            <% for (var x of messages.error) { %>
+             <h3><%= x %></h3>
+            <% } %>
+        <% } %>
+
+        <div style="display:inline-block; border: 1px solid black; padding: 20px; margin-left: 85px; margin-top: 90px;">
+        <h1>Registration</h1>
+        <!-- registration -->
+        <form action='/register' method='post'>
+            <div>
+                <label style="display:inline-block; width:100px;">First Name:</label>
+                <input type="text" name="first_name">
+            </div>
+
+            <div>
+                <label style="display:inline-block; width:100px;">Last Name:</label>
+                <input type="text" name="last_name">
+            </div>
+
+            <div>
+                <label style="display:inline-block; width:100px;">Email:</label>
+                <input type="text" name="email">
+            </div>
+    
+            <div>
+                <label style="display:inline-block; width:100px;">Birthday:</label>
+                <input style="display:inline-block; width:180px;" type="date" name="birthday">
+            </div>
+
+            <div>
+                <label style="display:inline-block; width:100px;">Password:</label>
+                <input type="text" name="password">
+            </div>
+            <br>
+            <input style="margin-left:198px;" type="submit" value="Register">
+        </form>
+    </div>
+
+    
+    <div style="display:inline-block; vertical-align:top; margin-left: 50px; border: 1px solid black; padding: 20px;  margin-top: 90px;">
+        <h1>Login</h1>
+        <form action='/login' method='post'>
+            <div>
+                <label style="display:inline-block; width:100px;">Email: </label>
+                <input type="text" name="email">
+            </div>
+
+            <div>
+                <label style="display:inline-block; width:100px;">Password: </label>
+                <input type="password" name="password">
+            </div>
+            <br>
+            <input style="margin-left:216px;" type="submit" value="Login">
+        </form>
+    </div>
+       
+    </div>
+</body>
+
+</html>

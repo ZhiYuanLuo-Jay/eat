@@ -1,0 +1,25 @@
+<div class="root">
+    <button type="button" class="btn btn-success"  [routerLink]="['/restaurants/new']" style="margin-bottom: 10px;">New restaurant</button>
+    
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Restaurant</th>
+          <th>Cuisine</th>
+          <th>Actions Available</th> 
+        </tr>
+      </thead>
+  
+      <tbody>
+          <router-outlet></router-outlet>
+          <tr *ngFor="let r of restaurantList">
+            <td>{{r.restaurant}}</td>
+            <td>{{r.cuisine}}</td> 
+            <td><button [routerLink]="['/restaurants', r._id]" type="button" class="btn btn-secondary">Read reviews</button>  <button [routerLink]="['/restaurants', r._id, 'edit']" style="margin-left: 10px" type="button" class="btn btn-warning">Update</button>  <button style="margin-left: 10px" type="button" class="btn btn-danger" [disabled]="buttonStatus" (click)="onRemove(r._id)">Delete</button></td>
+          </tr>
+      <tbody>
+    </table>
+  
+  </div>
+  
+  
