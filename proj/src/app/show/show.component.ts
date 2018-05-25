@@ -30,18 +30,21 @@ export class ShowComponent implements OnInit {
     let obserable = this._httpService.getReviews(this.restID);
     obserable.subscribe(info => {
     this.reviewList = info['info']['review'];
-    // let myArr = [];
-    // let min = 1;
-    // for (const s of this.reviewList) {
-    //   console.log(s.stars);
-    //   if (s.stars < min || s.stars == min){
-    //     myArr.unshift(s)
-    //   } else {
-    //     myArr.push(s)
-    //   }
-    // }
-    // console.log("myArr", myArr);
     this.restName = info['info']['restaurant'];
+    
+    for(var i=0; i<this.reviewList.length-1; i++){
+      for(var k=0; k<this.reviewList.length-1-i; k++){
+        // console.log(this.reviewList[k]['stars']);
+        // console.log(this.reviewList[k+1]['stars']);
+        let temp = this.reviewList[k+1];
+        if(this.reviewList[k]['stars']<this.reviewList[k+1]['stars']){
+          this.reviewList[k+1] = this.reviewList[k];
+          this.reviewList[k] = temp;
+        }
+      }
+      console.log("==========")
+    }
+    console.log("test", this.reviewList);
     console.log("Got our Reviews!", info['info']['review']);
     });    
   }
